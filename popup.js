@@ -1,6 +1,32 @@
 document.getElementById("summarize").addEventListener("click", handleSummarize);
 document.getElementById("copy-btn").addEventListener("click", handleCopy);
 
+// Apply saved theme on load
+document.addEventListener("DOMContentLoaded", () => {
+  chrome.storage.sync.get(["darkModeEnabled"], ({ darkModeEnabled }) => {
+    if (darkModeEnabled) {
+      document.body.classList.add("dark-theme");
+      document.getElementById("dark-mode-toggle").innerText = "☀️";
+    }
+  });
+});
+
+// Dark mode toggle button
+document.getElementById("dark-mode-toggle").addEventListener("click", () => {
+  const body = document.body;
+  const toggleBtn = document.getElementById("dark-mode-toggle");
+
+  if (body.classList.contains("dark-theme")) {
+    body.classList.remove("dark-theme");
+    toggleBtn.innerText = "🌙";
+    chrome.storage.sync.set({ darkModeEnabled: false });
+  } else {
+    body.classList.add("dark-theme");
+    toggleBtn.innerText = "☀️";
+    chrome.storage.sync.set({ darkModeEnabled: true });
+  }
+});
+
 async function handleSummarize() {
   const resultDiv = document.getElementById("result");
   const summaryType = document.getElementById("summary-type").value;

@@ -135,6 +135,29 @@
       #result::-webkit-scrollbar-thumb:hover {
         background-color: #94a3b8;
       }
+      /* Dark Theme Styles */
+body.dark-theme {
+  background-color: #1f2937; /* dark gray */
+  color: #f3f4f6; /* light text */
+}
+
+body.dark-theme #result {
+  background-color: #374151;
+  color: #f9fafb;
+  border-color: #4b5563;
+}
+
+body.dark-theme select,
+body.dark-theme button {
+  background-color: #4b5563;
+  color: #f3f4f6;
+  border: 1px solid #6b7280;
+}
+
+body.dark-theme button#dark-mode-toggle {
+  background-color: #2563eb;
+  color: white;
+}
     </style>
   </head>
 
@@ -149,6 +172,7 @@
       </select>
       <button id="summarize">Summarize</button>
       <button id="copy-btn">Copy</button>
+      <button id="dark-mode-toggle" title="Toggle Dark Mode"></button>
     </div>
 
     <div id="result">
