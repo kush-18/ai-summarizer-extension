@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   chrome.storage.sync.get(["darkModeEnabled"], ({ darkModeEnabled }) => {
     if (darkModeEnabled) {
       document.body.classList.add("dark-theme");
-      document.getElementById("dark-mode-toggle").innerText = "☀️";
+      document.getElementById("dark-mode-toggle").innerText = "Dark Mode";
     }
   });
 });
@@ -18,11 +18,11 @@ document.getElementById("dark-mode-toggle").addEventListener("click", () => {
 
   if (body.classList.contains("dark-theme")) {
     body.classList.remove("dark-theme");
-    toggleBtn.innerText = "🌙";
+    toggleBtn.innerText = "Light Mode On";
     chrome.storage.sync.set({ darkModeEnabled: false });
   } else {
     body.classList.add("dark-theme");
-    toggleBtn.innerText = "☀️";
+    toggleBtn.innerText = "Dark Mode On";
     chrome.storage.sync.set({ darkModeEnabled: true });
   }
 });
